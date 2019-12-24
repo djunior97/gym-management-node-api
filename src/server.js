@@ -1,3 +1,4 @@
 import App from './app';
+import 'dotenv/config';
 
-App.listen(3334);
+App.listen(process.env.DEV_PORT);
