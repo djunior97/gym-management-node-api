@@ -8,17 +8,22 @@ class StudentController {
       where: { email: req.body.email },
     });
 
-    // if (studentExists) {
-    //   return res.status(400).json({ error: 'Student already exists' });
-    // }
+    if (studentExists) {
+      return res.status(400).json({ error: 'Student already exists' });
+    }
 
-    // if (studentExists) {
-    //   return res.status(400).json({ error: 'Student already exists' });
-    // }
+    const { id, name, email, age, weight, height } = await Student.create(
+      req.body
+    );
 
-    // const student = await Student.create(req.body);
-
-    return res.json(studentExists);
+    return res.json({
+      id,
+      name,
+      email,
+      age,
+      weight,
+      height,
+    });
   }
 }
 
